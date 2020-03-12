@@ -1,7 +1,7 @@
 ﻿$MsgSourceTypeID = (Invoke-Sqlcmd -ServerInstance 'localhost' -Database LogRhythmEMDB -Query "SELECT MsgSourceTypeID FROM MsgSourceType WHERE Name = 'Flat File - Microsoft IIS W3C File'").MsgSourceTypeID
 $MsgSourceDateFormatID = (Invoke-Sqlcmd -ServerInstance 'localhost' -Database LogRhythmEMDB -Query "SELECT MsgSourceDateFormatID FROM MsgSourceDateFormat WHERE Name = 'Microsoft IIS W3C File'").MsgSourceDateFormatID
 
-$servers = Import-Csv -Path 'C:\LogRhythm\ART\IIS.csv'
+$servers = Import-Csv -Path 'C:\LogRhythm\IIS.csv'
 "Count: $($servers.Count)"
 
 
