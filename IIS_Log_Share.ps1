@@ -1,7 +1,19 @@
-﻿function Set-FolderPermission{
+﻿If (-NOT(is-admin))
+ {    
+  Echo "This script needs to be run As Admin"
+  Break
+ }
+
+function is-admin
+ {
+ # Returns true/false
+   ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+ }
+ 
+function Set-FolderPermission{
     param(
         [string]$folderPath = 'C:\inetpub\logs\LogFiles',
-        [string]$user = "arcci\soc"
+        [string]$user = "lr"
     )
     $Rights = "Read, ReadAndExecute, ListDirectory"
     $InheritSettings = "Containerinherit, ObjectInherit"
