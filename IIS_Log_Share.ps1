@@ -10,6 +10,10 @@ function is-admin
    ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
  }
  
+ function Get-OSVersion{
+    (Get-WMIObject win32_operatingsystem).Name.Split('|')[0]
+ }
+
 function Set-FolderPermission{
     param(
         [string]$folderPath = 'C:\inetpub\logs\LogFiles',
@@ -30,7 +34,7 @@ function Set-FolderPermission{
 function Create-IISShare{
     param(
         [string]$logsFilePath = 'C:\inetpub\logs\LogFiles',
-        [string]$User = 'arcci\soc',
+        [string]$User = 'lr',
         [string]$name
     )
     $Share = New-SmbShare -Path $logsFilePath -Name $name  -ReadAccess $User
