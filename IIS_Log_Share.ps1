@@ -56,7 +56,7 @@ if((Get-WindowsFeature -Name Web-Server).Installed){
                 }
                 $shareName = "w3svc$($Site.id)"
                 Set-FolderPermission -folderPath $logFolder
-                $sName = Create-IISShare -logsFilePath $logFolder -User 'arcci\soc' -name $shareName
+                $sName = Create-IISShare -logsFilePath $logFolder -User 'lr' -name $shareName
                 "$($env:ComputerName),$($Site.Name),\\$($env:ComputerName)\$($sName)"| Out-File -FilePath $OutputFile -Append
             }
         }
